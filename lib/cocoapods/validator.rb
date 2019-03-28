@@ -555,6 +555,12 @@ module Pod
       app_project = Xcodeproj::Project.new(validation_dir + 'App.xcodeproj')
       app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target)
       Pod::Generator::AppTargetHelper.add_swift_version(app_target, derived_swift_version)
+      app_project.targets.each do |target|
+        target.build_configurations.each do |config|
+          config.build_settings['ASSETCATALOG_COMPILER_APPICON_NAME'] ||= ''
+        end
+      end
+
       app_project.save
       app_project.recreate_user_schemes
     end
