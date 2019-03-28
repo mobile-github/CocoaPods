@@ -475,7 +475,7 @@ module Pod
 
     def create_app_project
       app_project = Xcodeproj::Project.new(validation_dir + 'App.xcodeproj')
-      Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target)
+      app_target = Pod::Generator::AppTargetHelper.add_app_target(app_project, consumer.platform_name, deployment_target)
       if consumer.platform_name == :ios ||  consumer.platform_name == :tvos
         app_target.build_configurations.each do |config|
           config.build_settings.delete('ASSETCATALOG_COMPILER_APPICON_NAME')
