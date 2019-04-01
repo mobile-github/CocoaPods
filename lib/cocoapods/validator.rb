@@ -536,6 +536,9 @@ module Pod
       Pod::Generator::AppTargetHelper.add_app_project_import(app_project, app_target, pod_target, consumer.platform_name)
       Pod::Generator::AppTargetHelper.add_xctest_search_paths(app_target) if @installer.pod_targets.any? { |pt| pt.spec_consumers.any? { |c| c.frameworks.include?('XCTest') } }
       Pod::Generator::AppTargetHelper.add_empty_swift_file(app_project, app_target) if @installer.pod_targets.any?(&:uses_swift?)
+      app_target.build_configurations.each do |config|
+        config.build_settings.delete('ASSETCATALOG_COMPILER_APPICON_NAME')
+      end
       app_project.save
       Xcodeproj::XCScheme.share_scheme(app_project.path, 'App')
       # Share the pods xcscheme only if it exists. For pre-built vendored pods there is no xcscheme generated.
