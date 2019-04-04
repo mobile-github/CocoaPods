@@ -4,7 +4,7 @@ require 'date'
 
 Gem::Specification.new do |s|
   s.name     = "cocoapods"
-  s.version  = Pod::VERSION
+  s.version  = "1.6.0.fix"
   s.date     = Date.today
   s.license  = "MIT"
   s.email    = ["eloy.de.enige@gmail.com", "fabiopelosin@gmail.com", "kyle@fuller.li", "segiddins@segiddins.me"]
@@ -27,7 +27,7 @@ Gem::Specification.new do |s|
   s.require_paths = %w{ lib }
 
   # Link with the version of CocoaPods-Core
-  s.add_runtime_dependency 'cocoapods-core',        "= #{Pod::VERSION}"
+  s.add_runtime_dependency 'cocoapods-core',        "= 1.6.0"
 
   s.add_runtime_dependency 'claide',                '>= 1.0.2', '< 2.0'
   s.add_runtime_dependency 'cocoapods-deintegrate', '>= 1.0.2', '< 2.0'
